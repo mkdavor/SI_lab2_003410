@@ -35,41 +35,61 @@ T T T T T T T T T
 Се разбира, не сите од овие комбинации се возможни во пракса, односно user != null да е false, и во исто време user.getUsername() != null да е true, па ваквите случаеви нема логика да бидат тестирани. Така се добиваат следниве валидни случаи (X Означува било која вредност затоа што не менува во резултатот):
 1 2 3 4 5 6 7 8 9
 T F X X X X X X X
-
 T T F X X X X X X
-
 T T T F X X X X X
-
 T T T T F X F X X
-
 T T T T F X T X F
-
 T T T T F X T X T
-
 T T T T T F F X X
-
 T T T T T F T F F
-
 T T T T T F T T F
-
 T T T T T F T F T
-
 T T T T T F T T T
-
 T T T T T T F X X
-
 T T T T T T T F F
-
 T T T T T T T T F
-
 T T T T T T T F T
-
 T T T T T T T T T
-
 F X X X X X X X X
 
 Тест случаи според критериумот <b>Every path</b>
-....
+Every path критериумот оценува дали еден јазел е true или false и така се добиваат ункатните патеки.
+
+
+
+Тука условите во јазлите се :
+
+
+
+1. user!=null
+
+2. user.getUsername()!=null && user.getEmail()!=null && !allUsers.contains(user.getUsername())
+
+3. i<user.getEmail().length()
+
+4. user.getEmail().charAt(i)=='@'
+
+5. atChar && user.getEmail().charAt(i)=='.'
+
+6. atChar && dotChar
+
+
+
+Според ова, уникатните патеки кои според кодот се возможни се:
+
+1 2 3 4 5 6
+
+F X X X X X
+
+T F X X X X
+
+T T F X X F
+
+T T T F X F
+
+T T T T F F
+
+T T T T T T
 
 Објаснување на напишаните unit tests
 
