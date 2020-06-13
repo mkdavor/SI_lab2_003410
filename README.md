@@ -1,2 +1,75 @@
 # SI_lab2_003410
-SI Lab2
+Втора лабораториска вежба по Софтверско инженерство
+Давор Дениќ, бр. на индекс 003410
+Група на код: 
+Ја добив групата на код 1
+
+Control Flow Graph
+![alt text](https://github.com/mkdavor/SI_lab2_003410/blob/master/zadaca1slika2.jpg)
+
+Цикломатска комплексност
+Цикломатската комплексност на овој код е 2, истата ја добив преку формулата E–N+2, каде што Е е бројот на edges, а N е бројот на nodes. Во случајoв Е=16, а N=12, па цикломатската комплексност изнесува 16-12+2=6.
+
+Тест случаи според критериумот <b>multiple condition</b>
+
+Според multiple condition критериумот има 2^n тест случаи каде n е бројот на различни булови изрази. Во кодот на функцијата function има 9 уникатни булови изрази и тоа:
+1: user!=null
+2: user.getUsername()!=null
+3: user.getEmail()!=null
+4: !allUsers.contains(user.getUsername())
+5: i<user.getEmail().length()
+6: user.getEmail().charAt(i)=='@'
+7: atChar == true
+8: user.getEmail().charAt(i)=='.'
+9: dotChar == true
+Според ова имаме 2^9 уникатни комбинации за тест случаи почнувајќи од тоа сите да се false (F), до тоа сите да се true (T). Во продолжение неколку случаи:
+
+1 2 3 4 5 6 7 8 9 (условите)
+F F F F F F F F F (резултатот)
+F F F F F F F F T 
+F F F F F F F T F 
+.................
+T T T T T T T T F
+T T T T T T T T T
+
+Се разбира, не сите од овие комбинации се возможни во пракса, односно user != null да е false, и во исто време user.getUsername() != null да е true, па ваквите случаеви нема логика да бидат тестирани. Така се добиваат следниве валидни случаи (X Означува било која вредност затоа што не менува во резултатот):
+1 2 3 4 5 6 7 8 9
+T F X X X X X X X
+
+T T F X X X X X X
+
+T T T F X X X X X
+
+T T T T F X F X X
+
+T T T T F X T X F
+
+T T T T F X T X T
+
+T T T T T F F X X
+
+T T T T T F T F F
+
+T T T T T F T T F
+
+T T T T T F T F T
+
+T T T T T F T T T
+
+T T T T T T F X X
+
+T T T T T T T F F
+
+T T T T T T T T F
+
+T T T T T T T F T
+
+T T T T T T T T T
+
+F X X X X X X X X
+
+Тест случаи според критериумот <b>Every path</b>
+....
+
+Објаснување на напишаните unit tests
+
